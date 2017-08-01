@@ -1,0 +1,52 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    int n; 
+    scanf("%d",&n);
+    char* s = (char *)malloc(10240 * sizeof(char));
+     char* t = (char *)malloc(10240 * sizeof(char));
+    scanf("%s",s);
+    int k,d; 
+    scanf("%d",&k);
+    for(int i=0;i<n;i++)
+    {
+     if(s[i]>=97&&s[i]<=122)
+        { d=s[i]+k;
+         if(d>122)
+         {
+             while(d>122)
+             {
+            d=d-26;
+             }
+                
+        
+         }
+          t[i]=(char) d;
+        }
+        else if(s[i]>=65&&s[i]<=90)
+        { d=s[i]+k;
+         if(d>90)
+         {
+             while(d>90)
+             {
+            d=d-26;
+                 
+        }
+         }
+         t[i]=(char) d;
+    }
+        else
+        {
+            t[i]=s[i];
+        }
+        
+    }
+    printf("%s",t);
+    return 0;
+}
