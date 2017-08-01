@@ -1,0 +1,47 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+char* solve(int year){
+    // Complete this function
+    int m[]={31,28,31,30,31,30,31,31};
+    int s=0;
+    int d;
+     char* str = (char *)malloc(10240 * sizeof(char));
+     char* yr = (char *)malloc(10240 * sizeof(char));
+    
+    if(year>1700&&year<=1917)
+        {
+        if(year%4==0)
+            m[1]=29;
+    }
+    if(year>1919&&year<=2700)
+        {
+        if(year%400==0||((year%4==0)&&!(year%100==0)))
+            m[1]=29;
+    }
+    for(int i=0;i<8;i++)
+        {
+        s=s+m[i];
+    }
+    d=256-s;
+    str=itoa(d);
+    yr=itoa(year);
+    strcat(str,".09.");
+    strcat(str,yr);
+    return(str);
+    
+}
+
+int main() {
+    int year; 
+    scanf("%d", &year);
+    int result_size;
+    char* result = solve(year);
+    printf("%s\n", result);
+    return 0;
+}
